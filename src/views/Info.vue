@@ -52,7 +52,6 @@ export default {
     width: 338px;
     font-size: 18px;
     color: #000000;
-    margin: 0 auto;
 
     p {
       line-height: 25px;
@@ -93,12 +92,10 @@ export default {
       padding: 36px 0;
 
       .profile {
+        width: 80%;
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
-      }
-
-      .profile-avatar {
-         margin: 0 auto;
       }
 
       .avatar-img{
@@ -113,4 +110,21 @@ export default {
       }
     }
   }
+
+    @media screen and (max-width: 767px){
+      .info-page{
+        width: 100%;
+        padding: 36px 0;
+
+        .profile {
+          width: 90%;
+          min-width: 320px;
+        }
+
+        .detail{
+          width: 90%;
+          min-width: 320px;
+        }
+      }
+    }
 </style>

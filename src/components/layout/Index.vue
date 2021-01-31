@@ -31,7 +31,6 @@ export default {
 }
 
 .app-main{
-  background-color: rgb(236, 236, 236);
   overflow-y: auto;
 }
 

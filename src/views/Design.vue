@@ -1,16 +1,15 @@
 <template>
   <div class="home">
-    <div class="carousel-wrap">
+    <div class="carousel-windows" :style="{padding: screenWidth <= 768 ? 0: '0 5.5%'}">
       <span class="carousel_prev" @click="prevCarousel('carousel_wrap1')"></span>
       <span class="carousel_next" @click="nextCarousel('carousel_wrap1')"></span>
-      <v-carousel ref="carousel_wrap1" hide-delimiters height="720">
-        <v-carousel-item
-          v-for="item in 4"
-          :key="item"
-        ></v-carousel-item>
-      </v-carousel>
+      <div class="carousel-wrap">
+        <v-carousel class="carousel-items" ref="carousel_wrap1" hide-delimiters :height="carouselHeight">
+          <v-carousel-item v-for="item in 4" :key="item"></v-carousel-item>
+        </v-carousel>
+      </div>
     </div>
-    <div class="carousel-info">
+    <div class="carousel-info" :style="{padding: screenWidth <= 768 ? '24px 16px': '24px 5.5%'}">
       <div class="info-item">
         <p>the 6th guangzhou triennial</p>
       </div>
@@ -29,17 +28,16 @@
         <p>Graphic Design: xxxxxxxxxxxxx , xxxxxxxxxxx</p>
       </div>
     </div>
-    <div class="carousel-wrap">
-      <span class="carousel_prev" @click="prevCarousel('carousel_wrap2')"></span>
-      <span class="carousel_next" @click="nextCarousel('carousel_wrap2')"></span>
-      <v-carousel ref="carousel_wrap2" hide-delimiters height="720">
-        <v-carousel-item
-          v-for="item in 4"
-          :key="item"
-        ></v-carousel-item>
-      </v-carousel>
+    <div class="carousel-windows" :style="{padding: screenWidth <= 768 ? 0: '0 5.5%'}">
+      <span class="carousel_prev" @click="prevCarousel('carousel_wrap1')"></span>
+      <span class="carousel_next" @click="nextCarousel('carousel_wrap1')"></span>
+      <div class="carousel-wrap">
+        <v-carousel class="carousel-items" ref="carousel_wrap1" hide-delimiters :height="carouselHeight">
+          <v-carousel-item v-for="item in 4" :key="item"></v-carousel-item>
+        </v-carousel>
+      </div>
     </div>
-    <div class="carousel-info">
+    <div class="carousel-info" :style="{padding: screenWidth <= 768 ? '24px 16px': '24px 5.5%'}">
       <div class="info-item">
         <p>the 6th guangzhou triennial</p>
       </div>
@@ -68,6 +66,7 @@ export default {
   name: 'Home',
   data () {
     return {
+      screenWidth: document.body.clientWidth,
       items: [
         {
           src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
@@ -84,6 +83,20 @@ export default {
       ]
     }
   },
+  computed: {
+    carouselHeight () {
+      const { screenWidth } = this
+      if (screenWidth < 768) {
+        return Math.round(screenWidth / 1.7778)
+      }
+
+      if (screenWidth * 0.5 <= 720) {
+        return screenWidth * 0.5
+      }
+
+      return 720
+    }
+  },
   methods: {
     prevCarousel (CarouselRef) {
       const carouselChildren = this.$refs[CarouselRef].$children
@@ -93,7 +106,17 @@ export default {
       const carouselChildren = this.$refs[CarouselRef].$children
       carouselChildren[carouselChildren.length - 1].click(event)
     }
+  },
+  mounted () {
+    const that = this
+    window.onresize = () => {
+      return (() => {
+        const screenWidth = document.body.clientWidth
+        that.screenWidth = screenWidth
+      })()
+    }
   }
+
 }
 </script>
 
@@ -101,13 +124,15 @@ export default {
 
 .home{
   height: 100%;
-  padding: 36px 40px 0;
+  padding: 36px 0;
   background-color: white;
 
-  .carousel-wrap{
-    // height: 720px;
-    padding: 0 46px;
+  .carousel-windows{
     position: relative;
+    width: 100%;
+    max-width: 1440px;
+    max-height: 720px;
+    margin: 0 auto;
 
     .carousel_prev,.carousel_next{
       width: 26px;
@@ -116,22 +141,39 @@ export default {
       background-repeat: no-repeat;
       position: absolute;
       top: calc(50% - 20px);
+      z-index: 1;
     }
 
-     .carousel_prev{
-       left: 0;
-       background-image: url('../assets/left.png');
-        &:hover{
-          background-image: url('../assets/left_red.png');
-        }
+    .carousel_prev{
+      left: 3%;
+      background-image: url('../assets/left.png');
+      &:hover{
+        background-image: url('../assets/left_red.png');
+      }
     }
 
     .carousel_next{
-       right: 0;
-       background-image: url('../assets/right.png');
-        &:hover{
-          background-image: url('../assets/right_red.png');
-        }
+      right: 3%;
+      background-image: url('../assets/right.png');
+      &:hover{
+        background-image: url('../assets/right_red.png');
+      }
+    }
+
+  }
+
+  .carousel-wrap{
+    width: 100%;
+    max-width: 1280px;
+    max-height: 720px;
+    // padding: 0 41px;
+    // position: relative;
+    .carousel-items{
+      width: 100%;
+      height: 56.25% !important;
+      max-width: 1280px;
+      max-height: 720px;
+      margin: 0 auto;
     }
   }
   .v-window-item:nth-child(2n) {
@@ -149,7 +191,11 @@ export default {
 
 .carousel-info{
   display: flex;
-  padding: 24px 41px;
+  // padding: 24px 46px;
+  width: 100%;
+  max-width: 1440px;
+  max-height: 720px;
+  margin: 0 auto;
 
   .info-item{
     width: 25%;
@@ -169,21 +215,11 @@ export default {
   .home{
     padding: 36px 0 0;
 
-    .carousel-wrap{
-      padding:0;
-
-      .carousel_prev,.carousel_next{
-        z-index:1;
-      }
-
-      .carousel_prev{
-       left: 14px;
-      }
-
-      .carousel_next{
-       right: 14px;
-      }
-
+    .carousel_prev{
+      left: 14px;
+    }
+    .carousel_next{
+      right: 14px;
     }
 
     .carousel-info{
