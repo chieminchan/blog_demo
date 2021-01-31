@@ -113,7 +113,7 @@ export default {
 
   .menu-action{
     position: relative;
-    width:36px;
+    width:40px;
     height: 36px;
     display: none;
 
@@ -129,22 +129,22 @@ export default {
 
     .ac-gn-menuicon-bread-crust {
         display: block;
-        width: 18px;
+        width: 21px;
         height: 1px;
         background: black;
-        border-radius: 0.5px;
+        border-radius: 1px;
         position: absolute;
-        left: 0;
+        left: 4px;
         transition: transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s;
 
         &-top {
-          top: 8px;
-          transform: translateY(3px);
+          top: 14px;
+          transform: translateY(-3px);
         }
 
         &-bottom{
-          bottom: 8px;
-          transform: translateY(-3px);
+          bottom: 14px;
+          transform: translateY(3px);
         }
     }
   }
