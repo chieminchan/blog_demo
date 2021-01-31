@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="app-footer" :fixed="true" color="#ECECEC">
+  <v-footer app class="app-footer" :fixed="true" color="#ECECEC" height="48">
     <p class="lience">© 2020 zlx All rights reserved.</p>
     <p class="concat">
       <img class="email-icon" src="@/assets/mail.png"/>
@@ -51,9 +51,16 @@ export default {
 
 @media screen and(max-width: 420px){
   .app-footer.v-footer {
+    flex-direction: column;
+    align-items: flex-start;
+
+    p{
+      font-size: 16px;
+      text-align: left;
+    }
 
     .lience{
-      margin: 0 0 5px 0;
+      margin: 0 0 4px 0;
     }
   }
 }

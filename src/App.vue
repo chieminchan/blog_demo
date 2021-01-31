@@ -12,11 +12,13 @@ export default {
 </script>
 
 <style lang="less">
-.v-app{
+.v-app {
   height: 100%;
+  overflow: hidden;
 
   .v-application--wrap{
-    height: 100vh;
+    height: 100%;
+    overflow: hidden;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar class="app-bar" height="72" :class="{'app-bar-is-unfold': unfold, 'app-bar-action-show': hideMenu}" absolute flat color="rgb(236, 236, 236)" elevate-on-scroll scroll-target="#appMain">
+    <v-app-bar app class="app-bar" height="72" :class="{'app-bar-is-unfold': unfold, 'app-bar-action-show': hideMenu}" flat color="rgb(236, 236, 236)" elevate-on-scroll scroll-target="#appMain">
       <v-toolbar-title>
         <span class="bar-icon">
           <img src="@/assets/logo.png" />
@@ -157,6 +157,7 @@ export default {
     .menu-action {
       display: inline-block;
     }
+
     .menu-list{
       width: 100%;
       padding: 18px 14px 0;
@@ -175,6 +176,11 @@ export default {
     .menu-list-item{
       padding: 10px 15px;
       border-bottom: 1px solid #ccc;
+    }
+
+    .menu-link{
+      font-size: 18px;
+      font-weight: 500;
     }
   }
 

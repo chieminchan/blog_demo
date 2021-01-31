@@ -39,7 +39,7 @@ export default {
 <style type='text/less' lang='less'>
 .info-page{
   width: 100%;
-  padding: 106px 78px;
+  padding: 36px 78px;
   display: flex;
   background-color: rgb(236, 236, 236);
 

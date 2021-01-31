@@ -100,7 +100,9 @@ export default {
 <style lang="less">
 
 .home{
-  padding: 106px 40px 0;
+  height: 100%;
+  padding: 36px 40px 0;
+  background-color: white;
 
   .carousel-wrap{
     // height: 720px;
@@ -165,7 +167,7 @@ export default {
 
 @media screen and (max-width: 768px){
   .home{
-    padding: 106px 0 0;
+    padding: 36px 0 0;
 
     .carousel-wrap{
       padding:0;
