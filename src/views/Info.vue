@@ -90,7 +90,7 @@ export default {
     .info-page{
       flex-direction: column;
       justify-content: center;
-      padding: 136px 0;
+      padding: 36px 0;
 
       .profile {
         display: flex;
