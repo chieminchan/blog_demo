@@ -39,9 +39,7 @@ export default {
         { title: 'info' }
       ],
       activePage: this.$route.name,
-
       screenWidth: document.body.clientWidth,
-
       unfold: false
     }
   },
@@ -59,12 +57,10 @@ export default {
   },
   mounted () {
     const that = this
-    window.onresize = () => {
-      return (() => {
-        const screenWidth = document.body.clientWidth
-        that.screenWidth = screenWidth
-      })()
-    }
+    window.addEventListener('resize', () => {
+      const screenWidth = document.body.clientWidth
+      that.screenWidth = screenWidth
+    })
   },
   watch: {
     $route (to, from) {
@@ -79,6 +75,13 @@ export default {
   transition: height .56s cubic-bezier(0.52, 0.16, 0.24, 1) !important;
   z-index:2 !important;
 
+  @media screen and (min-width: 1441px){
+    .v-toolbar__content{
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  }
+
   .v-toolbar__content, .v-toolbar__extension{
     padding: 0
   }
@@ -92,9 +95,9 @@ export default {
   .menu-link{
     text-decoration: none;
     font-family: PingFangSC-Regular;
-    font-size: 21px;
+    font-size: 18px;
     color: #000000;
-    font-weight: 600;
+    font-weight: 400;
     padding-right: 40px;
 
     &:hover{
@@ -176,11 +179,6 @@ export default {
     .menu-list-item{
       padding: 10px 15px;
       border-bottom: 1px solid #ccc;
-    }
-
-    .menu-link{
-      font-size: 18px;
-      font-weight: 500;
     }
   }
 

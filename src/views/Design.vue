@@ -109,14 +109,11 @@ export default {
   },
   mounted () {
     const that = this
-    window.onresize = () => {
-      return (() => {
-        const screenWidth = document.body.clientWidth
-        that.screenWidth = screenWidth
-      })()
-    }
+    window.addEventListener('resize', () => {
+      const screenWidth = document.body.clientWidth
+      that.screenWidth = screenWidth
+    })
   }
-
 }
 </script>
 

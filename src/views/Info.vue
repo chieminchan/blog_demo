@@ -1,5 +1,6 @@
 <template>
   <div class="info-page">
+    <div class="info-wrapper">
     <div class="profile">
       <div class="profile-avatar">
         <img class="avatar-img" src="@/assets/avatar.png">
@@ -21,6 +22,7 @@
         <p class="detail-eng-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.</p>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -40,8 +42,18 @@ export default {
 .info-page{
   width: 100%;
   padding: 36px 78px;
-  display: flex;
   background-color: rgb(236, 236, 236);
+
+  .info-wrapper{
+    display: flex;
+  }
+
+  @media screen and (min-width: 1441px){
+    .info-wrapper{
+      width: 1440px;
+      margin: 0 auto;
+    }
+  }
 
   .avatar-img{
     width: 338px;
@@ -86,7 +98,7 @@ export default {
 }
 
   @media screen and (max-width: 1024px){
-    .info-page{
+    .info-wrapper{
       flex-direction: column;
       justify-content: center;
       padding: 36px 0;
@@ -112,7 +124,7 @@ export default {
   }
 
     @media screen and (max-width: 767px){
-      .info-page{
+      .info-wrapper{
         width: 100%;
         padding: 36px 0;
 
